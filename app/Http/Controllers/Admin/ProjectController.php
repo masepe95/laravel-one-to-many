@@ -95,7 +95,7 @@ class ProjectController extends Controller
         if (array_key_exists('image', $data)) {
             if ($project->image) Storage::delete($project->image);
             $ext = $data['image']->extension();
-            $img_url = Storage::putFileAs('project_images', $data['image'], "{$data['slug']}.$ext");
+            $img_url = Storage::putFile('project_images', $data['image'], "{$data['slug']}.$ext");
             $data['image'] = $img_url;
         }
 
