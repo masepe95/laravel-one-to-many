@@ -21,6 +21,9 @@
                 </p>
                 <ul>
                     <li>
+                        <strong>Category:</strong> {{ $project->category ? $project->category->label : 'Not Available' }}
+                    </li>
+                    <li>
                         Main Language: {{ $project->main_lang }}
                     </li>
                     <li>

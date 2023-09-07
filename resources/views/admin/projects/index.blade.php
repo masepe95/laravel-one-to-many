@@ -18,6 +18,10 @@
                         <h2 class="m-0 d-flex align-items-center">
                             {{ $project->title }}
                         </h2>
+                        @if ($project->category)
+                            <span class="d-flex rounded border border-dark align-items-center m-0 px-3">
+                                {{ $project->category->label }}</span>
+                        @endif
                         @if ($project->is_public)
                             <div class="alert alert-success m-0">
                                 Open-Source

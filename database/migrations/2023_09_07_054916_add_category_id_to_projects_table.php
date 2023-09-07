@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('label')->unique();
-            $table->char('color', 7)->default('#ffffff');
-            $table->timestamps();
+        Schema::table('projects', function (Blueprint $category) {
+            $category->foreignId('category_id')->nullable()->after('id')->constrained()->nullOnDelete();
         });
     }
 
@@ -24,6 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::table('projects', function (Blueprint $category) {
+            $category->dropForeign('projects_type_id_foreign');
+            $category->dropColumn('category_id');
+        });
     }
 };

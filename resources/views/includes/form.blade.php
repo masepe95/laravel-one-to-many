@@ -64,6 +64,21 @@
         </div>
     @enderror
 </div>
+<div class="mb-3 ms-4 w-25">
+    <label for="category_id" class="form-label">Category</label>
+    <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+        <option value="">None</option>
+        @foreach ($categories as $category)
+            <option @if (old('category_id', $project->category_id) == $category->id) selected @endif value="{{ $category->id }}">
+                {{ $category->label }}</option>
+        @endforeach
+    </select>
+    @error('type_id')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
 <div class="mb-3 form-check">
     <label class="form-check-label" for="is_public">Open source</label>
     <input type="checkbox" @if (old('is_public', $project->is_public)) checked @endif value="1"
